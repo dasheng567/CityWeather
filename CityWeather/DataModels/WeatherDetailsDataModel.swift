@@ -7,6 +7,7 @@
 
 struct WeatherDetailsDataModel {
     let cityName: String
+    let weather: String
     let weatherDescription: String
     let weatherIcon: String
     let temperature: String
@@ -20,6 +21,7 @@ struct WeatherDetailsDataModel {
     init?(weather: WeatherResponse) {
         guard let icon = weather.weather?.first?.icon else { return nil }
         self.cityName = weather.name ?? "N/A"
+        self.weather = weather.weather?.first?.main ?? "N/A"
         self.weatherDescription = weather.weather?.first?.description ?? "N/A"
         self.weatherIcon = Constants.URLs.iconBaseURL + icon + Constants.URLs.iconURLSuffix
         if let temperature = weather.main?.temp {

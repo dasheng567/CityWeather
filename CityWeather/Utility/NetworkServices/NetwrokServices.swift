@@ -66,16 +66,23 @@ class WeatherService: NetworkServices {
         DispatchQueue.global().async {
             let task = URLSession.shared.dataTask(with: request) { data, _, error in
                 if let error {
-                    completion(.failure(error))
-                    return
+                    // Need to exexute the completion handler on the main queue
+                    DispatchQueue.main.async {
+                        completion(.failure(error))
+                    }
                 }
-
                 if let data {
                     do {
                         let weatherResponse = try JSONDecoder().decode(WeatherResponse.self, from: data)
-                        completion(.success(weatherResponse))
+                        // Need to exexute the completion handler on the main queue
+                        DispatchQueue.main.async {
+                            completion(.success(weatherResponse))
+                        }
                     } catch {
-                        completion(.failure(error))
+                        // Need to exexute the completion handler on the main queue
+                        DispatchQueue.main.async {
+                            completion(.failure(error))
+                        }
                     }
                 }
             }

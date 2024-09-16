@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 final class WeatherViewModel: ObservableObject {
-    private var cityName = "London"
+    @Published var cityName = ""
     @Published private(set) var weatherDetailsDataModel: WeatherDetailsDataModel?
     @Published private(set) var errorMessage: String?
 
