@@ -14,10 +14,13 @@ final class WeatherViewModel: ObservableObject {
     @Published private(set) var errorMessage: String?
 
     private let weatherService: NetworkServices
+    let coordinator: WeatherCoordinator
 
     // Set Dependency Injection on initializer
-    init(weatherService: NetworkServices = WeatherService.shared as NetworkServices) {
+    init(weatherService: NetworkServices = WeatherService.shared as NetworkServices,
+         coordinator: WeatherCoordinator = WeatherCoordinator()) {
         self.weatherService = weatherService
+        self.coordinator = coordinator
     }
 
     // Fetch weather data by city name

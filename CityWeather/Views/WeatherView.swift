@@ -35,6 +35,15 @@ struct WeatherView: View {
                         .padding()
                         .accessibilityLabel("Main Weather")
                 }
+
+                if let weatherDetailsDataModel = viewModel.weatherDetailsDataModel {
+                    NavigationLink(
+                        destination: viewModel.coordinator.showWeatherDetail(weatherDetailsDataModel: weatherDetailsDataModel)
+                    ) {
+                        Text("View Detail")
+                            .padding()
+                    }
+                }
             }
             .navigationTitle("City Weather Search")
         }
