@@ -21,6 +21,7 @@
 		F593F3C72C98D746009EB95A /* WeatherDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F593F3C62C98D746009EB95A /* WeatherDetailsView.swift */; };
 		F593F3C92C98E1F7009EB95A /* WeatherViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F593F3C82C98E1F7009EB95A /* WeatherViewModelTests.swift */; };
 		F593F3CB2C98E210009EB95A /* MoceNetworkServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = F593F3CA2C98E210009EB95A /* MoceNetworkServices.swift */; };
+		F593F3CE2C98FD93009EB95A /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F593F3CD2C98FD93009EB95A /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		F593F3C62C98D746009EB95A /* WeatherDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailsView.swift; sourceTree = "<group>"; };
 		F593F3C82C98E1F7009EB95A /* WeatherViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModelTests.swift; sourceTree = "<group>"; };
 		F593F3CA2C98E210009EB95A /* MoceNetworkServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoceNetworkServices.swift; sourceTree = "<group>"; };
+		F593F3CD2C98FD93009EB95A /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 		F55C4E402C985E560023B4A1 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				F593F3CC2C98FD83009EB95A /* LocationManager */,
 				F593F3C32C98D664009EB95A /* Coordinator */,
 				F593F3B62C98BACF009EB95A /* Constants */,
 				F55C4E412C985E690023B4A1 /* NetworkServices */,
@@ -196,6 +199,14 @@
 				F593F3C42C98D686009EB95A /* Coordinator.swift */,
 			);
 			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		F593F3CC2C98FD83009EB95A /* LocationManager */ = {
+			isa = PBXGroup;
+			children = (
+				F593F3CD2C98FD93009EB95A /* LocationManager.swift */,
+			);
+			path = LocationManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -331,6 +342,7 @@
 			files = (
 				F593F3C52C98D686009EB95A /* Coordinator.swift in Sources */,
 				F593F3BD2C98C765009EB95A /* WeatherDetailsDataModel.swift in Sources */,
+				F593F3CE2C98FD93009EB95A /* LocationManager.swift in Sources */,
 				F593F3BB2C98C71F009EB95A /* WeatherViewModel.swift in Sources */,
 				F593F3C22C98D18E009EB95A /* CityWeatherApp.swift in Sources */,
 				F55C4E432C985FE40023B4A1 /* NetwrokServices.swift in Sources */,
@@ -521,6 +533,9 @@
 				DEVELOPMENT_TEAM = 9K7U354QBX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CityWeather/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Request your location to provide your city weather";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Request your location to provide your city weather";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Request your location to provide your city weather";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -550,6 +565,9 @@
 				DEVELOPMENT_TEAM = 9K7U354QBX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CityWeather/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Request your location to provide your city weather";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Request your location to provide your city weather";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Request your location to provide your city weather";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;

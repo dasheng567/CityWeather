@@ -21,6 +21,7 @@ struct WeatherView: View {
 
                 Button("Search") {
                     viewModel.fetchCityWeather()
+                    viewModel.saveLastSearchedCity()
                 }
                 .padding()
                 .accessibilityLabel("Search button")
@@ -46,6 +47,9 @@ struct WeatherView: View {
                 }
             }
             .navigationTitle("City Weather Search")
+        }
+        .onAppear {
+            viewModel.setupDefaultWeather()
         }
     }
 }

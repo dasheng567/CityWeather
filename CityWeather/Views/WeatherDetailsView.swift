@@ -35,10 +35,8 @@ struct WeatherDetailView: View {
                 WeatherDetailsListView(weatherDetailsItem: weatherDetailsDataModel.humidity)
                 WeatherDetailsListView(weatherDetailsItem: weatherDetailsDataModel.temperature)
                 WeatherDetailsListView(weatherDetailsItem: weatherDetailsDataModel.feelsLike)
-                Spacer()
                 WeatherDetailsListView(weatherDetailsItem: weatherDetailsDataModel.temperatureMax)
                 WeatherDetailsListView(weatherDetailsItem: weatherDetailsDataModel.temperatureMin)
-                Spacer()
                 WeatherDetailsListView(weatherDetailsItem: weatherDetailsDataModel.windSpeed)
                 WeatherDetailsListView(weatherDetailsItem: weatherDetailsDataModel.visibility)
             }

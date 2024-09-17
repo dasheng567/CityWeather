@@ -13,13 +13,19 @@ final class WeatherViewModel: ObservableObject {
     @Published private(set) var weatherDetailsDataModel: WeatherDetailsDataModel?
     @Published private(set) var errorMessage: String?
 
+    private let userDefault: UserDefaults
     private let weatherService: NetworkServices
+    private let locationManager: LocationManager
     let coordinator: WeatherCoordinator
 
     // Set Dependency Injection on initializer
-    init(weatherService: NetworkServices = WeatherService.shared as NetworkServices,
+    init(userDefault: UserDefaults = UserDefaults.standard,
+         weatherService: NetworkServices = WeatherService.shared as NetworkServices,
+         locationManager: LocationManager = LocationManager.shared,
          coordinator: WeatherCoordinator = WeatherCoordinator()) {
+        self.userDefault = userDefault
         self.weatherService = weatherService
+        self.locationManager = locationManager
         self.coordinator = coordinator
     }
 
@@ -50,5 +56,39 @@ final class WeatherViewModel: ObservableObject {
                 self?.errorMessage = error.localizedDescription
             }
         }
+    }
+
+    // Setup the default city weather when lanching the device
+    func setupDefaultWeather() {
+        if let status = locationManager.permissionStatus {
+            switch status {
+            // Display user's city weather if location permission allowed
+            case .authorizedAlways, .authorizedWhenInUse:
+                if let location = locationManager.location {
+                    fetchLocationWeather(lat: location.coordinate.latitude, lon: location.coordinate.longitude)
+                }
+            // Request for user's permission of location
+            case .notDetermined:
+                locationManager.requestLocation()
+            // Display the last searched city weather if location permission is not allowed by user, or due to location restriction
+            case .denied, .restricted:
+                if let lastCity = loadLastSearchedCity() {
+                    cityName = lastCity
+                    fetchCityWeather()
+                }
+            @unknown default:
+                break
+            }
+        }
+    }
+
+    // Save searched city into Local storage
+    func saveLastSearchedCity() {
+        UserDefaults.standard.set(cityName, forKey: "LastSearchedCity")
+    }
+
+    // Try to get last searched city from Local storage
+    private func loadLastSearchedCity() -> String? {
+        return UserDefaults.standard.string(forKey: "LastSearchedCity")
     }
 }
